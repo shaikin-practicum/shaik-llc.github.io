@@ -39,6 +39,7 @@
 
     h2 {
       color: #0a2540;
+      margin-top: 0;
     }
 
     .contact {
@@ -57,6 +58,40 @@
       font-size: 0.9rem;
       color: #888;
     }
+
+    /* Новые стили для фото */
+    .about-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      margin-bottom: 2rem;
+    }
+
+    .profile-photo {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border: 2px solid #0a2540;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    /* Адаптивность для мобильных */
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+      }
+      
+      .profile-photo {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -68,29 +103,32 @@
 
   <main>
     <section>
-      <h2>About Us</h2>
-      <p>
-        We provide full-cycle software development services — from idea to 
-launch, including programming, testing, ongoing support, and continuous 
-improvement. Whether you need a turnkey solution or individual 
-professionals for your project, we are here to help.
-      </p>
-      <p>
-        At Shaik LLC, we pride ourselves on being more flexible than any 
-company you’ve worked with before. Your satisfaction is our top priority.
-      </p>
-      <p>
-        We will never upsell services you don’t need. We value our 
-reputation — and it is precisely this reputation that keeps bringing us 
-new and loyal clients.
-      </p>
+      <div class="about-container">
+        <img src="photo.jpg" alt="Фото владельца компании" class="profile-photo">
+        <div class="about-text">
+          <h2>About Us</h2>
+          <p>
+            We provide full-cycle software development services — from idea to 
+            launch, including programming, testing, ongoing support, and continuous 
+            improvement. Whether you need a turnkey solution or individual 
+            professionals for your project, we are here to help.
+          </p>
+          <p>
+            At Shaik LLC, we pride ourselves on being more flexible than any 
+            company you've worked with before. Your satisfaction is our top priority.
+          </p>
+          <p>
+            We will never upsell services you don't need. We value our 
+            reputation — and it is precisely this reputation that keeps bringing us 
+            new and loyal clients.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section class="contact">
       <h2>Contact Us</h2>
-      <p>Email: <a 
-href="mailto:info@shaiksolutions.com">info@shaiksolutions.com</a></p>
-      <!-- Optional: Add LinkedIn or GitHub -->
+      <p>Email: <a href="mailto:info@shaiksolutions.com">info@shaiksolutions.com</a></p>
     </section>
   </main>
 
@@ -100,4 +138,3 @@ href="mailto:info@shaiksolutions.com">info@shaiksolutions.com</a></p>
 
 </body>
 </html>
-
