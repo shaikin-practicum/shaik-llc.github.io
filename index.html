@@ -6,125 +6,266 @@
   <title>Shaik LLC - Software Development & QA Services</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: 'Arial', sans-serif;
       background: #f4f4f4;
       color: #333;
       line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
+    /* ── STICKY WRAPPER ── */
+    .sticky-top {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+
+    /* ── HEADER ── */
     header {
       background: #0a2540;
       color: #fff;
-      padding: 2rem;
+      padding: 1.5rem 2rem;
       text-align: center;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
+      margin-bottom: 0.2rem;
     }
 
+    header p {
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: #0d3060;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: #aac4e8;
+      padding: 0.9rem 2rem;
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, color 0.2s;
+      border-bottom: 3px solid transparent;
+    }
+
+    nav button:hover {
+      background: rgba(255,255,255,0.07);
+      color: #fff;
+    }
+
+    nav button.active {
+      color: #fff;
+      border-bottom: 3px solid #4a9fd4;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* ── MAIN ── */
     main {
-      padding: 2rem;
-      max-width: 800px;
-      margin: 2rem auto;
-      background: white;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      border-radius: 8px;
+      flex: 1;
+      padding: 2.5rem 1.5rem;
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
     }
 
-    section {
-      margin-bottom: 2.5rem;
+    /* ── PAGES ── */
+    .page {
+      display: none;
+      animation: fadeIn 0.3s ease;
     }
 
-    h2 {
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
       color: #0a2540;
-      margin-top: 0;
-      border-bottom: 2px solid #f0f8ff;
+      font-size: 1.7rem;
+      margin-bottom: 1.5rem;
       padding-bottom: 0.5rem;
+      border-bottom: 3px solid #4a9fd4;
+      display: inline-block;
     }
 
-    .contact {
-      background: #f0f8ff;
-      padding: 1.5rem;
+    /* ── ABOUT PAGE ── */
+    .about-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    }
+
+    .profile-photo {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
       border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.12);
+      border: 3px solid #0a2540;
+      flex-shrink: 0;
     }
 
-    .contact p {
-      margin: 1rem 0;
+    .about-text p {
+      margin-bottom: 1rem;
+      color: #444;
+    }
+
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── SERVICES PAGE ── */
+    .services-intro {
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      margin-bottom: 1.8rem;
+      color: #444;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      border-top: 4px solid #0a2540;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      transition: box-shadow 0.25s, transform 0.2s;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 8px 24px rgba(10,37,64,0.15);
+      transform: translateY(-3px);
+    }
+
+    .service-card i {
+      font-size: 1.8rem;
+      color: #4a9fd4;
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      color: #0a2540;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: #555;
+    }
+
+    /* ── CONTACT PAGE ── */
+    .contact-wrapper {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    .contact-info {
+      padding: 2rem;
+    }
+
+    .contact-info p {
       display: flex;
       align-items: center;
+      gap: 12px;
+      margin-bottom: 1.1rem;
+      font-size: 1rem;
+      color: #333;
     }
 
-    .contact i {
-      width: 25px;
-      color: #0a2540;
-      margin-right: 10px;
+    .contact-info i {
+      width: 36px;
+      height: 36px;
+      background: #0a2540;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
     }
 
-    a {
+    .contact-info a {
       color: #0a2540;
       text-decoration: none;
-      transition: color 0.3s;
+      transition: color 0.2s;
     }
 
-    a:hover {
+    .contact-info a:hover {
       color: #0066cc;
       text-decoration: underline;
     }
 
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background: #0a2540;
-      color: #fff;
+    .contact-divider {
+      height: 1px;
+      background: #eef3f8;
+      margin: 1.5rem 0;
     }
 
-    /* Style for photo */
-    .about-container {
-      display: flex;
-      align-items: flex-start;
-      gap: 30px;
-      margin-bottom: 2rem;
-    }
-
-    .profile-photo {
-      width: 220px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      border: 3px solid #0a2540;
-    }
-
-    .about-text {
-      flex: 1;
-    }
-
-    /* Buttons of Contact US */
     .contact-actions {
       display: flex;
-      gap: 15px;
-      margin-top: 25px;
+      gap: 12px;
       flex-wrap: wrap;
+      margin-top: 1.5rem;
     }
 
     .contact-btn {
-      padding: 12px 20px;
-      border-radius: 5px;
+      padding: 12px 22px;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
-      transition: all 0.3s;
+      font-size: 0.95rem;
       display: flex;
       align-items: center;
       gap: 8px;
+      transition: all 0.25s;
     }
 
     .email-btn {
-      background: #ebeb31;
-      color: white;
+      background: #e8c800;
+      color: #333;
     }
 
     .call-btn {
@@ -134,95 +275,205 @@
 
     .contact-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 14px rgba(0,0,0,0.15);
       text-decoration: none;
     }
 
-    /* Adoption */
-    @media (max-width: 768px) {
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 1.2rem;
+      background: #0a2540;
+      color: #aac4e8;
+      font-size: 0.9rem;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      header h1 { font-size: 1.6rem; }
+
+      nav button {
+        padding: 0.75rem 1.1rem;
+        font-size: 0.85rem;
+      }
+
       .about-container {
         flex-direction: column;
         align-items: center;
+        text-align: center;
       }
-      
+
       .profile-photo {
-        width: 180px;
-        height: 180px;
-        margin-bottom: 20px;
+        width: 160px;
+        height: 160px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
       }
 
       .contact-actions {
         flex-direction: column;
-      }
-
-      main {
-        margin: 1rem;
-        padding: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
 
+  <div class="sticky-top">
   <header>
     <h1>Shaik LLC</h1>
     <p>Custom Software Development & QA Services</p>
   </header>
 
+  <nav>
+    <button class="active" data-page="about">
+      <i class="fas fa-user"></i> About Us
+    </button>
+    <button data-page="services">
+      <i class="fas fa-cogs"></i> Our Services
+    </button>
+    <button data-page="contact">
+      <i class="fas fa-envelope"></i> Contact Us
+    </button>
+  </nav>
+  </div>
+
   <main>
-    <section>
+
+    <!-- ── ABOUT PAGE ── -->
+    <div class="page active" id="page-about">
+      <h2 class="section-title">About Us</h2>
       <div class="about-container">
         <img src="photo.jpg" alt="Sergei Shaik, Founder of Shaik LLC" class="profile-photo">
         <div class="about-text">
-          <h2>About Us</h2>
           <p>
-            We provide full-cycle software development services — from idea to 
-            launch, including programming, testing, ongoing support, and continuous 
-            improvement. Whether you need a turnkey solution or individual 
+            We provide full-cycle software development services — from idea to
+            launch, including programming, testing, ongoing support, and continuous
+            improvement. Whether you need a turnkey solution or individual
             professionals for your project, we are here to help.
           </p>
           <p>
-            At Shaik LLC, we pride ourselves on being more flexible than any 
+            At Shaik LLC, we pride ourselves on being more flexible than any
             company you've worked with before. Your satisfaction is our top priority.
           </p>
           <p>
-            We will never upsell services you don't need. We value our 
-            reputation — and it is precisely this reputation that keeps bringing us 
+            We will never upsell services you don't need. We value our
+            reputation — and it is precisely this reputation that keeps bringing us
             new and loyal clients.
           </p>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="contact">
-      <h2>Contact Us</h2>
-      <p>
-        <i class="fas fa-envelope"></i>
-        <strong>Email:</strong> <a href="mailto:info@shaiksolutions.com"> info@shaiksolutions.com</a>
-      </p>
-      <p>
-        <i class="fas fa-phone"></i>
-        <strong>Phone:</strong> <a href="tel:+19162077495"> +1 (916) 207-7495</a>
-      </p>
-      <p>
-        <i class="fas fa-map-marker-alt"></i>
-        <strong>Address:</strong> 501 Rivergate Way, Suite 160, Sacramento, CA 95831
-      </p>
-      
-      <div class="contact-actions">
-        <a href="mailto:info@shaiksolutions.com" class="contact-btn email-btn">
-          <i class="fas fa-envelope"></i> Email Us
-        </a>
-        <a href="tel:+19162077495" class="contact-btn call-btn">
-          <i class="fas fa-phone"></i> Call Now
-        </a>
+    <!-- ── SERVICES PAGE ── -->
+    <div class="page" id="page-services">
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-intro">
+        From a single engineer to a full project team — we adapt to what you need, when you need it.
       </div>
-    </section>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Custom Software Development</h3>
+          <p>Full-cycle development from concept to launch — web, desktop, and embedded applications tailored to your business.</p>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-microchip"></i>
+          <h3>Firmware Development</h3>
+          <p>Embedded systems and firmware engineering for IoT devices, microcontrollers, and hardware products.</p>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-bug"></i>
+          <h3>Software & Firmware Testing</h3>
+          <p>Comprehensive QA: manual and automated testing, regression, functional, integration, and performance testing.</p>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-tasks"></i>
+          <h3>QA Consulting</h3>
+          <p>Test strategy, process setup, and quality audits to help your team ship reliable software faster.</p>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-tools"></i>
+          <h3>Ongoing Support & Maintenance</h3>
+          <p>Post-launch support, bug fixes, performance monitoring, and continuous improvement of your product.</p>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-user-tie"></i>
+          <h3>Staff Augmentation</h3>
+          <p>Individual engineers and testers available to join your team — flexible engagement, no long-term commitment required.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── CONTACT PAGE ── -->
+    <div class="page" id="page-contact">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <p>
+            <i class="fas fa-envelope"></i>
+            <span><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#046d6a626b44776c656d6f776b6871706d6b6a772a676b69"><span class="__cf_email__" data-cfemail="f39a9d959cb3809b929a98809c9f86879a9c9d80dd909c9e">[email&#160;protected]</span></a></span>
+          </p>
+          <p>
+            <i class="fas fa-phone"></i>
+            <span><strong>Phone:</strong> <a href="tel:+19162077495">+1 (916) 207-7495</a></span>
+          </p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            <span><strong>Address:</strong> 501 Rivergate Way, Suite 160, Sacramento, CA 95831</span>
+          </p>
+
+          <div class="contact-divider"></div>
+
+          <p style="color:#555; font-size:0.95rem; display:block;">
+            Ready to discuss your project? Reach out and we'll get back to you promptly.
+          </p>
+
+          <div class="contact-actions">
+            <a href="/cdn-cgi/l/email-protection#61080f070e21120900080a120e0d1415080e0f124f020e0c" class="contact-btn email-btn">
+              <i class="fas fa-envelope"></i> Email Us
+            </a>
+            <a href="tel:+19162077495" class="contact-btn call-btn">
+              <i class="fas fa-phone"></i> Call Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <footer>
-    &copy; 2025 Shaik LLC. All rights reserved.
+    &copy; 2026 Shaik LLC. All rights reserved.
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var buttons = document.querySelectorAll('nav button');
+      var pages = document.querySelectorAll('.page');
+
+      buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var name = btn.getAttribute('data-page');
+
+          pages.forEach(function(p) { p.classList.remove('active'); });
+          buttons.forEach(function(b) { b.classList.remove('active'); });
+
+          document.getElementById('page-' + name).classList.add('active');
+          btn.classList.add('active');
+          window.scrollTo(0, 0);
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
